@@ -30,7 +30,7 @@ public class Usuario {
 
 
         public Usuario(UserDTO data) {
-                this.nome = data.email();
+                this.nome = data.nome();
                 this.email = data.email();
         }
 }

@@ -2,6 +2,7 @@ package com.example.SAEP.controller;
 
 import com.example.SAEP.dto.TarefaDTO;
 import com.example.SAEP.dto.TarefaDetailDTO;
+import com.example.SAEP.dto.TarefaUpdate;
 import com.example.SAEP.entities.Tarefa;
 import com.example.SAEP.entities.Usuario;
 import com.example.SAEP.repository.UserRepository;
@@ -48,7 +49,7 @@ public class TarefaController {
 
     @PutMapping("/tarefa/{id}")
     @CrossOrigin("http://localhost:3000")
-    public ResponseEntity<Tarefa> updateTarefa(@PathVariable Long id, @RequestBody Tarefa TarefaDetails) {
+    public ResponseEntity<Tarefa> updateTarefa(@PathVariable Long id, @RequestBody TarefaUpdate TarefaDetails) {
         Tarefa updatedTarefa = tarefaService.updateTarefa(id, TarefaDetails);
         if (updatedTarefa != null) {
             return new ResponseEntity<>(updatedTarefa, HttpStatus.OK);

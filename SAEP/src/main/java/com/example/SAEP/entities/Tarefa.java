@@ -39,15 +39,15 @@ public class Tarefa {
 
 
     public enum Priority {
-        baixa,
-        media,
-        alta
+        BAIXA,
+        MEDIA,
+        ALTA
     }
 
     public enum Status {
-        a_fazer,
-        fazendo,
-        pronto
+        A_FAZER,
+        FAZENDO,
+        PRONTO
     }
 
     public Tarefa(TarefaDTO data,Usuario uset) {

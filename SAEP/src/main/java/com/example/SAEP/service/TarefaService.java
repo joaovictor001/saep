@@ -1,6 +1,7 @@
 package com.example.SAEP.service;
 
 import com.example.SAEP.dto.TarefaDTO;
+import com.example.SAEP.dto.TarefaUpdate;
 import com.example.SAEP.entities.Tarefa;
 import com.example.SAEP.entities.Usuario;
 import com.example.SAEP.repository.TarefaRespository;
@@ -27,7 +28,7 @@ public class TarefaService {
         Usuario user = userRepository.findById(tarefa.usuario()).orElseThrow(()-> new RuntimeException("nao acjou o use"));
         Tarefa tarefa1 = new Tarefa(tarefa,user);
         if (tarefa1.getStatus() == null){
-            tarefa1.setStatus(Tarefa.Status.a_fazer);
+            tarefa1.setStatus(Tarefa.Status.A_FAZER);
         }
         return tarefaRespository.save(tarefa1);
     }
@@ -36,13 +37,14 @@ public class TarefaService {
         return tarefaRespository.findById(id).orElse(null);
     }
 
-    public Tarefa updateTarefa(Long id, Tarefa TarefaDetails) {
+    public Tarefa updateTarefa(Long id, TarefaUpdate data
+    ) {
         Tarefa Tarefa = getTarefa(id);
         if (Tarefa != null) {
-            Tarefa.setDescricao(TarefaDetails.getDescricao());
-            Tarefa.setSetor(TarefaDetails.getSetor());
-            Tarefa.setPrioridade(TarefaDetails.getPrioridade());
-            Tarefa.setStatus(TarefaDetails.getStatus());
+            Tarefa.setDescricao(data.descricao());
+            Tarefa.setSetor(data.setor());
+            Tarefa.setPrioridade(data.prioridade());
+            Tarefa.setStatus(data.status());
             return tarefaRespository.save(Tarefa);
         }
         return null;
